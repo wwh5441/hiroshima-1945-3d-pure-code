@@ -1,11 +1,11 @@
 # ENOLA GAY · 31,060 FEET · HIROSHIMA 1945 (WebGL2 纯代码 3D 飞行战演)
 
-零外部 3D 模型（0 GLB/OBJ）、零外部位图贴图（0 PNG/JPG）、零外部音频采样（0 MP3/WAV）——在 **Antigravity** 上由 **Carbon（第 3 轮）** 构建的 **WebGL2 双视锥 `RGBA16F` HDR** 纯代码 B-29 广岛历史模拟演示（纯代码极简版单网页压缩体积仅 **`81.0 KiB`**，不到一张压缩图片大小，浏览器点开即跑）。
+零外部 3D 模型（0 GLB/OBJ）、零外部位图贴图（0 PNG/JPG）、零外部音频采样（0 MP3/WAV）——在 **Antigravity** 上由 **Carbon（第 3 轮）** 构建的 **WebGL2 双视锥 `RGBA16F` HDR** 纯代码 B-29 广岛历史模拟演示（纯代码极简版整包 **ZIP 仅 `81.0 KiB`**，不到一张压缩图片大小，解压为单个 `284 KiB` 的 `.html` 文件，浏览器点开即跑）。
 
-- **在线直开（双地形实时切换完整版 · GitHub Pages）**：https://wwh5441.github.io/hiroshima-1945-3d-pure-code/
-- **81.0 KiB 纯代码极简版单网页直开**：https://wwh5441.github.io/hiroshima-1945-3d-pure-code/hiroshima-1945-3d-minimal.html
-- **248.9 KiB 原版卫星地形单网页直开**：https://wwh5441.github.io/hiroshima-1945-3d-pure-code/hiroshima-1945-3d-original-dem.html
-- **单文件离线包下载（Releases）**：前往 [Releases 最新版](https://github.com/wwh5441/hiroshima-1945-3d-pure-code/releases/latest) 下载 `hiroshima-1945-3d-minimal.zip`（`81.0 KiB`）或 `hiroshima-1945-3d-original-dem.zip`（`248.9 KiB`）
+- **在线直开（三地形实时切换完整版 · GitHub Pages）**：https://wwh5441.github.io/hiroshima-1945-3d-pure-code/
+- **纯代码极简版在线直开**（单文件 HTML `284 KiB`，对应离线压缩包 **`81.0 KiB` ZIP**）：https://wwh5441.github.io/hiroshima-1945-3d-pure-code/hiroshima-1945-3d-minimal.html
+- **原版卫星地形在线直开**（单文件 HTML `585 KiB`，对应离线压缩包 **`248.9 KiB` ZIP**）：https://wwh5441.github.io/hiroshima-1945-3d-pure-code/hiroshima-1945-3d-original-dem.html
+- **离线 ZIP 包下载（Releases）**：前往 [Releases 最新版](https://github.com/wwh5441/hiroshima-1945-3d-pure-code/releases/latest) 下载 `hiroshima-1945-3d-minimal.zip`（**`81.0 KiB`**）或 `hiroshima-1945-3d-original-dem.zip`（**`248.9 KiB`**）
 
 ## 本版资产体积
 
