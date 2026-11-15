@@ -1,0 +1,26 @@
+:root {
+  --bg-void: #05070a;
+  --surface-glass: rgba(10, 14, 19, 0.72);
+  --surface-glass-strong: rgba(8, 11, 15, 0.88);
+  --border-subtle: rgba(214, 224, 232, 0.14);
+  --border-strong: rgba(235, 196, 128, 0.42);
+
+  --text-primary: #eef2f5;
+  --text-secondary: rgba(226, 233, 240, 0.72);
+  --text-muted: rgba(190, 202, 214, 0.46);
+
+  --accent-radium: #d7e6a8;
+  --accent-amber: #ebb665;
+  --accent-alert: #ff7a52;
+
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", "Hiragino Sans GB", sans-serif;
+  --font-display: "SF Pro Display", "Avenir Next", "PingFang SC", sans-serif;
+  --font-mono: "SF Mono", ui-monospace, Menlo, Monaco, Consolas, monospace;
+
+  --z-canvas: 1;
+  --z-hud: 10;
+  --z-controls: 20;
+  --z-briefing: 40;
+
+  --ease-cinema: cubic-bezier(0.22, 1, 0.36, 1);
+}

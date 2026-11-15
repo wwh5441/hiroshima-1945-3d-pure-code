@@ -1,0 +1,29 @@
+/* Clean-Feed Mode (removes middle explanatory captions, briefing screen & bottom scrubber; keeps top numeric telemetry) */
+body.is-clean-feed .briefing-screen,
+body.is-clean-feed .control-bar,
+body.is-clean-feed .hud-caption-wrap,
+body.is-clean-feed .hud-brand .hud-tag,
+body.is-clean-feed .hud-brand .hud-station {
+  display: none !important;
+}
+
+body.is-clean-feed .hud-top {
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+/* Live Picture-in-Picture (PiP) Hairline Frame Overlay */
+.pip-overlay-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: calc(var(--z-hud) - 1);
+}
+
+.pip-frame-box {
+  position: absolute;
+  border: 1.5px solid rgba(226, 234, 242, 0.58);
+  box-shadow: 0 0 0 1px rgba(4, 7, 11, 0.85), 0 10px 28px rgba(0, 0, 0, 0.55);
+  border-radius: 2px;
+}

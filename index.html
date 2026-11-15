@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>ENOLA GAY · 31,060 FEET · HIROSHIMA 1945</title>
+  <link rel="stylesheet" href="./styles/tokens.css" />
+  <link rel="stylesheet" href="./styles/layout.css" />
+  <link rel="stylesheet" href="./styles/components/briefing.css" />
+  <link rel="stylesheet" href="./styles/components/hud.css" />
+  <link rel="stylesheet" href="./styles/components/pip.css" />
+  <link rel="stylesheet" href="./styles/components/controls.css" />
+</head>
+<body>
+  <main id="app-shell" class="app-shell">
+    <canvas id="viewport" class="viewport-canvas" aria-label="B-29 Enola Gay Multi-Station 3D Historical Simulation"></canvas>
+
+    <!-- Norden M-9 Optical Bombsight Reticle Overlay (Active ONLY in Station 2 Bombardier during Bomb Run) -->
+    <div id="norden-reticle" class="norden-reticle" hidden aria-hidden="true">
+      <div class="norden-ring">
+        <span class="norden-line norden-line--h"></span>
+        <span class="norden-line norden-line--v"></span>
+        <span class="norden-tag">NORDEN M-9 · STABILIZED OPTICS · AIOI T-BRIDGE</span>
+      </div>
+    </div>
+
+    <!-- Minimalist Cinematic Telemetry & Caption Layer -->
+    <section id="hud-layer" class="hud-layer" aria-live="polite">
+      <header class="hud-top">
+        <div class="hud-brand">
+          <span class="hud-tag">B-29-45-MO · 44-86292 · #82</span>
+          <span id="hud-clock" class="hud-mono">08:14:55 JST</span>
+          <span id="hud-station-title" class="hud-station">AUTO · COL. PAUL TIBBETS · LEFT SEAT</span>
+        </div>
+        <div class="hud-telemetry">
+          <div class="hud-stat">
+            <span class="hud-label">ALT</span>
+            <span id="hud-alt" class="hud-value">31,060 FT</span>
+          </div>
+          <div class="hud-stat">
+            <span class="hud-label">TAS</span>
+            <span id="hud-tas" class="hud-value">328 MPH</span>
+          </div>
+          <div class="hud-stat">
+            <span class="hud-label">GS</span>
+            <span id="hud-gs" class="hud-value">285 MPH</span>
+          </div>
+          <div class="hud-stat">
+            <span class="hud-label">HDG</span>
+            <span id="hud-hdg" class="hud-value">266°</span>
+          </div>
+          <div class="hud-stat">
+            <span class="hud-label">LOAD</span>
+            <span id="hud-g" class="hud-value">1.0 G</span>
+          </div>
+          <div class="hud-stat" id="hud-range-box" hidden>
+            <span class="hud-label">SLANT</span>
+            <span id="hud-range-val" class="hud-value">9.5 KM</span>
+          </div>
+          <div class="hud-stat hud-stat--accent" id="hud-wave-box" hidden>
+            <span class="hud-label" id="hud-wave-label">FALL</span>
+            <span id="hud-wave-val" class="hud-value">44.4 S</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="hud-caption-wrap">
+        <p id="hud-act-title" class="hud-act-title"></p>
+        <p id="hud-caption" class="hud-caption"></p>
+      </div>
+    </section>
+
+    <!-- Opening Stark Title Card -->
+    <section id="briefing-screen" class="briefing-screen">
+      <div class="briefing-inner">
+        <p class="briefing-kicker">AUGUST 6, 1945 · 08:15 JST · TINIAN TO HIROSHIMA</p>
+        <h1 class="briefing-title">ENOLA GAY</h1>
+        <p class="briefing-subtitle">31,060 FEET &middot; 4 CREW &amp; ESCORT STATIONS &middot; 1:1 BALLISTICS</p>
+        <div class="briefing-specs">
+          <span>右倾 60° 真实脱离航迹</span>
+          <span>&middot;</span>
+          <span>44.4 秒 RK4 自由落体</span>
+          <span>&middot;</span>
+          <span>18.5 公里追尾双激波</span>
+        </div>
+        <button id="btn-start" class="briefing-btn" type="button" disabled>
+          <span id="btn-start-text">正在烘焙 3D 体积云、广岛城区与物理弹道...</span>
+        </button>
+        <p class="briefing-hint">按键 0 全自动导演 · 按键 1 机长 / 2 投弹手 / 3 尾炮手 / 4 伴飞自由环视 · 稳锁 30 FPS</p>
+      </div>
+    </section>
+
+    <!-- Bottom Scrubber, Station Selector & Playback Controls -->
+    <footer id="control-bar" class="control-bar">
+      <button id="btn-play" class="ctrl-btn" type="button" title="播放 / 暂停 (Space)">暂停</button>
+      <button id="btn-replay" class="ctrl-btn ctrl-btn--icon" type="button" title="重播 (R)">↺</button>
+
+      <div id="station-bar" class="station-bar" role="group" aria-label="视角工位切换"></div>
+
+      <div class="scrubber-wrap">
+        <div class="scrubber-markers" id="scrubber-markers"></div>
+        <input id="timeline-slider" class="timeline-slider" type="range" min="0" max="142" step="0.05" value="0" aria-label="任务时间轴" />
+      </div>
+
+      <span id="time-readout" class="ctrl-time">00:00 / 02:22</span>
+      <div id="terrain-bar" class="station-bar terrain-bar" role="group" aria-label="地形方案切换"></div>
+      <button id="btn-mute" class="ctrl-btn" type="button" title="声音开关 (M)">声音: 开</button>
+      <button id="btn-quality" class="ctrl-btn" type="button" title="画质档位">画质: 电影</button>
+    </footer>
+  </main>
+
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
